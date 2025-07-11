@@ -1,0 +1,168 @@
+.admin-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.admin-section {
+  margin-bottom: 30px;
+}
+
+.admin-section h2 {
+  margin-bottom: 10px;
+}
+
+.admin-section ul {
+  padding-left: 20px;
+}
+
+.admin-section li {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.admin-section li:hover {
+  background-color: #f2f2f2;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.admin-button {
+   padding: 8px 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.2s;
+}
+
+.admin-selected-user {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+
+.admin-selected-user strong {
+  color: #333;
+  font-weight: bold;
+}
+
+.admin-input-area {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.admin-input-area input {
+ flex: 1;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.admin-chat-box {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto;
+}
+.admin-chat-box h4{
+    color:white;
+    background-color: #007bff;
+    padding: 20px;
+    border-radius: 20px;
+}
+.admin-chat-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-chat-box li {
+  margin-bottom: 10px;
+  width: 400px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.admin-chat-box .admin-msg {
+  background-color: none;
+  color: black;
+}
+
+.admin-chat-box .user-msg {
+  background-color: white;
+  color: balck;
+  
+}
+.admin-chat-box li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  max-width: 70%;
+  border-radius: 8px;
+  word-wrap: break-word;
+}
+
+.admin-msg {
+  background-color: none;
+  align-self: flex-end; 
+  text-align: left;
+}
+
+
+.user-msg {
+  background-color: #f1f0f0;
+  align-self: flex-start; 
+  text-align: right;
+}
+
+/* Take Over / Release button */
+.admin-takeover-button {
+  padding: 8px 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.2s;
+}
+
+
+.admin-takeover-button:hover {
+  background-color: #0056b3;
+}
+
+/* Input + Send button container */
+.admin-input-area {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+
+
+/* Send button */
+.admin-input-area button {
+  padding: 10px 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.admin-input-area button:hover {
+  background-color: #1e7e34;
+}
