@@ -1,0 +1,1049 @@
+{
+  "settings": {
+    "languages": [
+      "en",
+      "te"
+    ],
+    "forceNER": true,
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "executeActionsBeforeAnswers": false,
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en",
+      "te"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "account,balanc,check,my": {
+            "intent": "account.balance",
+            "domain": "default"
+          },
+          "balanc,is,my,what": {
+            "intent": "account.balance",
+            "domain": "default"
+          },
+          "balanc,bank,my,show": {
+            "intent": "account.balance",
+            "domain": "default"
+          },
+          "bill,my,show": {
+            "intent": "account.bill",
+            "domain": "default"
+          },
+          "bill,is,latest,my,what": {
+            "intent": "account.bill",
+            "domain": "default"
+          },
+          "bill,current,get,my": {
+            "intent": "account.bill",
+            "domain": "default"
+          },
+          "bill,do,happen,i,if,my,not,pay,what": {
+            "intent": "account.lateFee",
+            "domain": "default"
+          },
+          "i,if,miss,my,payment,what": {
+            "intent": "account.lateFee",
+            "domain": "default"
+          },
+          "bill,consequ,not,of,pay": {
+            "intent": "account.lateFee",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "account.balance": "default",
+          "account.bill": "default",
+          "account.lateFee": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "check my account balance",
+            "intent": "account.balance"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is my balance",
+            "intent": "account.balance"
+          },
+          {
+            "domain": "default",
+            "utterance": "show my bank balance",
+            "intent": "account.balance"
+          },
+          {
+            "domain": "default",
+            "utterance": "show my bill",
+            "intent": "account.bill"
+          },
+          {
+            "domain": "default",
+            "utterance": "what is my latest bill",
+            "intent": "account.bill"
+          },
+          {
+            "domain": "default",
+            "utterance": "get my current bill",
+            "intent": "account.bill"
+          },
+          {
+            "domain": "default",
+            "utterance": "what happens if I don't pay my bill",
+            "intent": "account.lateFee"
+          },
+          {
+            "domain": "default",
+            "utterance": "what if I miss my payment",
+            "intent": "account.lateFee"
+          },
+          {
+            "domain": "default",
+            "utterance": "consequences of not paying bill",
+            "intent": "account.lateFee"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "check": 1,
+              "my": 1,
+              "account": 1,
+              "balanc": 1,
+              "what": 1,
+              "is": 1,
+              "show": 1,
+              "bank": 1,
+              "bill": 1,
+              "latest": 1,
+              "get": 1,
+              "current": 1,
+              "happen": 1,
+              "if": 1,
+              "i": 1,
+              "do": 1,
+              "not": 1,
+              "pay": 1,
+              "miss": 1,
+              "payment": 1,
+              "consequ": 1,
+              "of": 1
+            },
+            "intents": {
+              "account.balance": 1,
+              "account.bill": 1,
+              "account.lateFee": 1
+            },
+            "intentFeatures": {
+              "account.balance": {
+                "check": 1,
+                "my": 1,
+                "account": 1,
+                "balanc": 1,
+                "what": 1,
+                "is": 1,
+                "show": 1,
+                "bank": 1
+              },
+              "account.bill": {
+                "show": 1,
+                "my": 1,
+                "bill": 1,
+                "what": 1,
+                "is": 1,
+                "latest": 1,
+                "get": 1,
+                "current": 1
+              },
+              "account.lateFee": {
+                "what": 1,
+                "happen": 1,
+                "if": 1,
+                "i": 1,
+                "do": 1,
+                "not": 1,
+                "pay": 1,
+                "my": 1,
+                "bill": 1,
+                "miss": 1,
+                "payment": 1,
+                "consequ": 1,
+                "of": 1
+              }
+            },
+            "featuresToIntent": {
+              "check": [
+                "account.balance"
+              ],
+              "my": [
+                "account.balance",
+                "account.bill",
+                "account.lateFee"
+              ],
+              "account": [
+                "account.balance"
+              ],
+              "balanc": [
+                "account.balance"
+              ],
+              "what": [
+                "account.balance",
+                "account.bill",
+                "account.lateFee"
+              ],
+              "is": [
+                "account.balance",
+                "account.bill"
+              ],
+              "show": [
+                "account.balance",
+                "account.bill"
+              ],
+              "bank": [
+                "account.balance"
+              ],
+              "bill": [
+                "account.bill",
+                "account.lateFee"
+              ],
+              "latest": [
+                "account.bill"
+              ],
+              "get": [
+                "account.bill"
+              ],
+              "current": [
+                "account.bill"
+              ],
+              "happen": [
+                "account.lateFee"
+              ],
+              "if": [
+                "account.lateFee"
+              ],
+              "i": [
+                "account.lateFee"
+              ],
+              "do": [
+                "account.lateFee"
+              ],
+              "not": [
+                "account.lateFee"
+              ],
+              "pay": [
+                "account.lateFee"
+              ],
+              "miss": [
+                "account.lateFee"
+              ],
+              "payment": [
+                "account.lateFee"
+              ],
+              "consequ": [
+                "account.lateFee"
+              ],
+              "of": [
+                "account.lateFee"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "check",
+                "my",
+                "account",
+                "balanc",
+                "what",
+                "is",
+                "show",
+                "bank",
+                "bill",
+                "latest",
+                "get",
+                "current",
+                "happen",
+                "if",
+                "i",
+                "do",
+                "not",
+                "pay",
+                "miss",
+                "payment",
+                "consequ",
+                "of"
+              ],
+              "intents": [
+                "account.balance",
+                "account.bill",
+                "account.lateFee"
+              ],
+              "perceptrons": [
+                [
+                  1.4887053966522217,
+                  2.392220973968506,
+                  1.4887053966522217,
+                  7.764153480529785,
+                  0.774196982383728,
+                  2.041795492172241,
+                  0.6100906729698181,
+                  2.338923215866089,
+                  -4.453245639801025,
+                  -1.8964946269989014,
+                  -0.4105681777000427,
+                  -0.4105681777000427,
+                  -0.23029069602489471,
+                  -1.2671464681625366,
+                  -1.2671464681625366,
+                  -0.23029069602489471,
+                  -0.23029069602489471,
+                  -0.23029069602489471,
+                  -0.9142251014709473,
+                  -0.9142251014709473,
+                  0,
+                  0,
+                  1.1954294571506858
+                ],
+                [
+                  -0.6924195289611816,
+                  3.07924222946167,
+                  -0.6924195289611816,
+                  -4.750662803649902,
+                  -0.7680516242980957,
+                  1.0435713529586792,
+                  2.939061164855957,
+                  -1.9558912515640259,
+                  7.046561241149902,
+                  3.0545990467071533,
+                  1.688344955444336,
+                  1.688344955444336,
+                  -1.1705999374389648,
+                  -1.7459226846694946,
+                  -1.7459226846694946,
+                  -1.1705999374389648,
+                  -2.608377456665039,
+                  -2.608377456665039,
+                  -0.4189697206020355,
+                  -0.4189697206020355,
+                  -1.337504506111145,
+                  -1.337504506111145,
+                  0.8672619011247759
+                ],
+                [
+                  -0.28691989183425903,
+                  -0.7726497650146484,
+                  -0.28691989183425903,
+                  -1.1689387559890747,
+                  1.332629680633545,
+                  -1.6203768253326416,
+                  -1.0517518520355225,
+                  -0.16892047226428986,
+                  0.5220478177070618,
+                  -0.9619677662849426,
+                  -0.5785889029502869,
+                  -0.5785889029502869,
+                  -0.13533496856689453,
+                  3.059798002243042,
+                  3.059798002243042,
+                  -0.13533496856689453,
+                  3.0692834854125977,
+                  3.0692834854125977,
+                  3.1951494216918945,
+                  3.1951494216918945,
+                  3.2046315670013428,
+                  3.2046315670013428,
+                  1.2160059201295743
+                ]
+              ]
+            }
+          }
+        }
+      },
+      "te": {
+        "settings": {
+          "locale": "te",
+          "trainByDomain": false,
+          "tag": "domain-manager-te",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "ఉంది,ఎంత,ఖాతాలో,నా": {
+            "intent": "account.balance",
+            "domain": "default"
+          },
+          "తెలుసుకోవాలి,నా,నాకు,బ్యాలెన్స్": {
+            "intent": "account.balance",
+            "domain": "default"
+          },
+          "ఖాతా,చూపించు,నా,బాలెన్స్": {
+            "intent": "account.balance",
+            "domain": "default"
+          },
+          "చూపించండి,నా,బిల్లు": {
+            "intent": "account.bill",
+            "domain": "default"
+          },
+          "ఎంత,చివరి,నా,బిల్లు": {
+            "intent": "account.bill",
+            "domain": "default"
+          },
+          "చూపించు,ప్రస్తుత,బిల్లు": {
+            "intent": "account.bill",
+            "domain": "default"
+          },
+          "ఏమవుతుంది,చెల్లించకపోతే,నేను,బిల్లు": {
+            "intent": "account.lateFee",
+            "domain": "default"
+          },
+          "అయితే,ఏం,చెల్లింపు,నాకు,మిస్": {
+            "intent": "account.lateFee",
+            "domain": "default"
+          },
+          "ఏం,చెల్లించకపోతే,జరగుతుంది,బిల్లు": {
+            "intent": "account.lateFee",
+            "domain": "default"
+          },
+          "కావాలి,సహాయం": {
+            "intent": "help",
+            "domain": "default"
+          },
+          "చేస్తారా,నాకు,మీరు,సహాయం": {
+            "intent": "help",
+            "domain": "default"
+          },
+          "చేయండి,దయచేసి,నాకు,సహాయం": {
+            "intent": "help",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "account.balance": "default",
+          "account.bill": "default",
+          "account.lateFee": "default",
+          "help": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "నా ఖాతాలో ఎంత ఉంది",
+            "intent": "account.balance"
+          },
+          {
+            "domain": "default",
+            "utterance": "నాకు నా బ్యాలెన్స్ తెలుసుకోవాలి",
+            "intent": "account.balance"
+          },
+          {
+            "domain": "default",
+            "utterance": "నా ఖాతా బాలెన్స్ చూపించు",
+            "intent": "account.balance"
+          },
+          {
+            "domain": "default",
+            "utterance": "నా బిల్లు చూపించండి",
+            "intent": "account.bill"
+          },
+          {
+            "domain": "default",
+            "utterance": "నా చివరి బిల్లు ఎంత",
+            "intent": "account.bill"
+          },
+          {
+            "domain": "default",
+            "utterance": "ప్రస్తుత బిల్లు చూపించు",
+            "intent": "account.bill"
+          },
+          {
+            "domain": "default",
+            "utterance": "నేను బిల్లు చెల్లించకపోతే ఏమవుతుంది?",
+            "intent": "account.lateFee"
+          },
+          {
+            "domain": "default",
+            "utterance": "నాకు చెల్లింపు మిస్ అయితే ఏం?",
+            "intent": "account.lateFee"
+          },
+          {
+            "domain": "default",
+            "utterance": "బిల్లు చెల్లించకపోతే ఏం జరగుతుంది",
+            "intent": "account.lateFee"
+          },
+          {
+            "domain": "default",
+            "utterance": "సహాయం కావాలి",
+            "intent": "help"
+          },
+          {
+            "domain": "default",
+            "utterance": "మీరు నాకు సహాయం చేస్తారా",
+            "intent": "help"
+          },
+          {
+            "domain": "default",
+            "utterance": "దయచేసి నాకు సహాయం చేయండి",
+            "intent": "help"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "te",
+              "tag": "nlu-te",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "నా": 1,
+              "ఖాతాలో": 1,
+              "ఎంత": 1,
+              "ఉంది": 1,
+              "నాకు": 1,
+              "బ్యాలెన్స్": 1,
+              "తెలుసుకోవాలి": 1,
+              "ఖాతా": 1,
+              "బాలెన్స్": 1,
+              "చూపించు": 1,
+              "బిల్లు": 1,
+              "చూపించండి": 1,
+              "చివరి": 1,
+              "ప్రస్తుత": 1,
+              "నేను": 1,
+              "చెల్లించకపోతే": 1,
+              "ఏమవుతుంది": 1,
+              "చెల్లింపు": 1,
+              "మిస్": 1,
+              "అయితే": 1,
+              "ఏం": 1,
+              "జరగుతుంది": 1,
+              "సహాయం": 1,
+              "కావాలి": 1,
+              "మీరు": 1,
+              "చేస్తారా": 1,
+              "దయచేసి": 1,
+              "చేయండి": 1
+            },
+            "intents": {
+              "account.balance": 1,
+              "account.bill": 1,
+              "account.lateFee": 1,
+              "help": 1
+            },
+            "intentFeatures": {
+              "account.balance": {
+                "నా": 1,
+                "ఖాతాలో": 1,
+                "ఎంత": 1,
+                "ఉంది": 1,
+                "నాకు": 1,
+                "బ్యాలెన్స్": 1,
+                "తెలుసుకోవాలి": 1,
+                "ఖాతా": 1,
+                "బాలెన్స్": 1,
+                "చూపించు": 1
+              },
+              "account.bill": {
+                "నా": 1,
+                "బిల్లు": 1,
+                "చూపించండి": 1,
+                "చివరి": 1,
+                "ఎంత": 1,
+                "ప్రస్తుత": 1,
+                "చూపించు": 1
+              },
+              "account.lateFee": {
+                "నేను": 1,
+                "బిల్లు": 1,
+                "చెల్లించకపోతే": 1,
+                "ఏమవుతుంది": 1,
+                "నాకు": 1,
+                "చెల్లింపు": 1,
+                "మిస్": 1,
+                "అయితే": 1,
+                "ఏం": 1,
+                "జరగుతుంది": 1
+              },
+              "help": {
+                "సహాయం": 1,
+                "కావాలి": 1,
+                "మీరు": 1,
+                "నాకు": 1,
+                "చేస్తారా": 1,
+                "దయచేసి": 1,
+                "చేయండి": 1
+              }
+            },
+            "featuresToIntent": {
+              "నా": [
+                "account.balance",
+                "account.bill"
+              ],
+              "ఖాతాలో": [
+                "account.balance"
+              ],
+              "ఎంత": [
+                "account.balance",
+                "account.bill"
+              ],
+              "ఉంది": [
+                "account.balance"
+              ],
+              "నాకు": [
+                "account.balance",
+                "account.lateFee",
+                "help"
+              ],
+              "బ్యాలెన్స్": [
+                "account.balance"
+              ],
+              "తెలుసుకోవాలి": [
+                "account.balance"
+              ],
+              "ఖాతా": [
+                "account.balance"
+              ],
+              "బాలెన్స్": [
+                "account.balance"
+              ],
+              "చూపించు": [
+                "account.balance",
+                "account.bill"
+              ],
+              "బిల్లు": [
+                "account.bill",
+                "account.lateFee"
+              ],
+              "చూపించండి": [
+                "account.bill"
+              ],
+              "చివరి": [
+                "account.bill"
+              ],
+              "ప్రస్తుత": [
+                "account.bill"
+              ],
+              "నేను": [
+                "account.lateFee"
+              ],
+              "చెల్లించకపోతే": [
+                "account.lateFee"
+              ],
+              "ఏమవుతుంది": [
+                "account.lateFee"
+              ],
+              "చెల్లింపు": [
+                "account.lateFee"
+              ],
+              "మిస్": [
+                "account.lateFee"
+              ],
+              "అయితే": [
+                "account.lateFee"
+              ],
+              "ఏం": [
+                "account.lateFee"
+              ],
+              "జరగుతుంది": [
+                "account.lateFee"
+              ],
+              "సహాయం": [
+                "help"
+              ],
+              "కావాలి": [
+                "help"
+              ],
+              "మీరు": [
+                "help"
+              ],
+              "చేస్తారా": [
+                "help"
+              ],
+              "దయచేసి": [
+                "help"
+              ],
+              "చేయండి": [
+                "help"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "te",
+                "tag": "nlu-te",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "నా",
+                "ఖాతాలో",
+                "ఎంత",
+                "ఉంది",
+                "నాకు",
+                "బ్యాలెన్స్",
+                "తెలుసుకోవాలి",
+                "ఖాతా",
+                "బాలెన్స్",
+                "చూపించు",
+                "బిల్లు",
+                "చూపించండి",
+                "చివరి",
+                "ప్రస్తుత",
+                "నేను",
+                "చెల్లించకపోతే",
+                "ఏమవుతుంది",
+                "చెల్లింపు",
+                "మిస్",
+                "అయితే",
+                "ఏం",
+                "జరగుతుంది",
+                "సహాయం",
+                "కావాలి",
+                "మీరు",
+                "చేస్తారా",
+                "దయచేసి",
+                "చేయండి"
+              ],
+              "intents": [
+                "account.balance",
+                "account.bill",
+                "account.lateFee",
+                "help"
+              ],
+              "perceptrons": [
+                [
+                  5.071727275848389,
+                  3.443209171295166,
+                  0.9654345512390137,
+                  3.443209171295166,
+                  1.3758513927459717,
+                  3.2712504863739014,
+                  3.2712504863739014,
+                  2.7506091594696045,
+                  2.7506091594696045,
+                  2.4275288581848145,
+                  -4.781501770019531,
+                  -1.8793243169784546,
+                  -2.4814536571502686,
+                  -0.27175745368003845,
+                  -0.01989678293466568,
+                  -0.0391390323638916,
+                  -0.01989678293466568,
+                  -0.665869951248169,
+                  -0.665869951248169,
+                  -0.665869951248169,
+                  -0.6845422983169556,
+                  -0.009293858893215656,
+                  -1.4459998607635498,
+                  -0.18670302629470825,
+                  -0.6132687330245972,
+                  -0.6132687330245972,
+                  -0.6049654483795166,
+                  -0.6049654483795166,
+                  1.282687727495456
+                ],
+                [
+                  2.0270004272460938,
+                  -1.9808405637741089,
+                  1.1530191898345947,
+                  -1.9808405637741089,
+                  -1.2073606252670288,
+                  -0.8117895126342773,
+                  -0.8117895126342773,
+                  -2.2619895935058594,
+                  -2.2619895935058594,
+                  1.8887760639190674,
+                  7.323929309844971,
+                  3.967773914337158,
+                  3.1449244022369385,
+                  4.157486915588379,
+                  -2.044452428817749,
+                  -3.9852542877197266,
+                  -2.044452428817749,
+                  -0.10842602699995041,
+                  -0.10842602699995041,
+                  -0.10842602699995041,
+                  -2.1036229133605957,
+                  -1.931594967842102,
+                  -0.5209567546844482,
+                  -0.29578638076782227,
+                  -0.10163780301809311,
+                  -0.10163780301809311,
+                  -0.06217293441295624,
+                  -0.06217293441295624,
+                  0.7548336919096075
+                ],
+                [
+                  -2.2773287296295166,
+                  -0.13606853783130646,
+                  -0.7448863387107849,
+                  -0.13606853783130646,
+                  0.9833975434303284,
+                  -0.38905787467956543,
+                  -0.38905787467956543,
+                  -0.0741482824087143,
+                  -0.0741482824087143,
+                  -1.5976555347442627,
+                  1.933332920074463,
+                  -0.9004369378089905,
+                  -0.5732619762420654,
+                  -1.4802794456481934,
+                  3.1060028076171875,
+                  4.959234237670898,
+                  3.1060028076171875,
+                  2.5701634883880615,
+                  2.5701634883880615,
+                  2.5701634883880615,
+                  4.420627593994141,
+                  1.8507078886032104,
+                  -1.4148623943328857,
+                  -0.2740911841392517,
+                  -0.5150500535964966,
+                  -0.5150500535964966,
+                  -0.48512908816337585,
+                  -0.48512908816337585,
+                  1.1531486873628063
+                ],
+                [
+                  -1.6163944005966187,
+                  -0.2130001038312912,
+                  -0.28042274713516235,
+                  -0.2130001038312912,
+                  1.2683653831481934,
+                  -1.0457829236984253,
+                  -1.0457829236984253,
+                  -0.11907237768173218,
+                  -0.11907237768173218,
+                  -0.5885982513427734,
+                  -0.9937632083892822,
+                  -0.06546204537153244,
+                  -0.04068896546959877,
+                  -0.43508270382881165,
+                  -0.32385966181755066,
+                  -0.39303937554359436,
+                  -0.32385966181755066,
+                  -0.9365992546081543,
+                  -0.9365992546081543,
+                  -0.9365992546081543,
+                  -1.0227512121200562,
+                  -0.05596787482500076,
+                  7.627147674560547,
+                  4.200412750244141,
+                  1.7004733085632324,
+                  1.7004733085632324,
+                  1.6977609395980835,
+                  1.6977609395980835,
+                  2.057676747680446
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "check my account balance"
+      ],
+      [
+        "en",
+        "what is my balance"
+      ],
+      [
+        "en",
+        "show my bank balance"
+      ],
+      [
+        "te",
+        "నా ఖాతాలో ఎంత ఉంది"
+      ],
+      [
+        "te",
+        "నాకు నా బ్యాలెన్స్ తెలుసుకోవాలి"
+      ],
+      [
+        "te",
+        "నా ఖాతా బాలెన్స్ చూపించు"
+      ],
+      [
+        "en",
+        "show my bill"
+      ],
+      [
+        "en",
+        "what is my latest bill"
+      ],
+      [
+        "en",
+        "get my current bill"
+      ],
+      [
+        "te",
+        "నా బిల్లు చూపించండి"
+      ],
+      [
+        "te",
+        "నా చివరి బిల్లు ఎంత"
+      ],
+      [
+        "te",
+        "ప్రస్తుత బిల్లు చూపించు"
+      ],
+      [
+        "en",
+        "what happens if I don't pay my bill"
+      ],
+      [
+        "en",
+        "what if I miss my payment"
+      ],
+      [
+        "en",
+        "consequences of not paying bill"
+      ],
+      [
+        "te",
+        "నేను బిల్లు చెల్లించకపోతే ఏమవుతుంది?"
+      ],
+      [
+        "te",
+        "నాకు చెల్లింపు మిస్ అయితే ఏం?"
+      ],
+      [
+        "te",
+        "బిల్లు చెల్లించకపోతే ఏం జరగుతుంది"
+      ],
+      [
+        "te",
+        "సహాయం కావాలి"
+      ],
+      [
+        "te",
+        "మీరు నాకు సహాయం చేస్తారా"
+      ],
+      [
+        "te",
+        "దయచేసి నాకు సహాయం చేయండి"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "en": {
+        "account.balance": [
+          {
+            "answer": "Your current balance is ₹10,000."
+          }
+        ],
+        "account.bill": [
+          {
+            "answer": "I will check your bill."
+          }
+        ],
+        "account.lateFee": [
+          {
+            "answer": "If you don’t pay your bill on time, you may be charged a late fee or service could be interrupted."
+          }
+        ]
+      },
+      "te": {
+        "account.balance": [
+          {
+            "answer": "మీ ఖాతాలో ₹10,000 ఉంది."
+          }
+        ],
+        "account.bill": [
+          {
+            "answer": "నేను మీ బిల్లు చెక్ చేస్తాను."
+          }
+        ],
+        "account.lateFee": [
+          {
+            "answer": "మీరు బిల్లును సకాలంలో చెల్లించకపోతే, ఆలస్య రుసుము విధించబడవచ్చు లేదా సేవకు అంతరాయం కలగవచ్చు."
+          }
+        ],
+        "help": [
+          {
+            "answer": "తప్పకుండా! మీరు ఏ విషయంలో సహాయం కోరుతున్నారు?"
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}
