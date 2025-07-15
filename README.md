@@ -110,8 +110,11 @@ npm start
 # In another terminal
 cd server
 npm run dev
+
 💻 Usage
-As a User:
+
+## As a User:
+
 Sign up or log in and select your preferred language.
 
 Use the Dashboard for navigation.
