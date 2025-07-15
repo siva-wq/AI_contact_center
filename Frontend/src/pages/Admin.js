@@ -19,7 +19,7 @@ const Admin = () => {
   const [isTakenOver, setIsTakenOver] = useState(false);
   const [adminInput, setAdminInput] = useState("");
   const [room, setroom] = useState(null)
-  
+  const [admin,setadmin]=useState([]);
 
   useEffect(() => {
     if (!room) return;
@@ -66,7 +66,16 @@ const Admin = () => {
       console.error("Error fetching users:", error);
     }
   };
-
+  const fetchadmins=async()=>{
+    try{
+      const response= await axios.get("http://localhost:5000/virtual-assistant/getadmins");
+      
+      setadmin(Array.isArray(response.data.users)?response.data.users:[]);
+      console.log(admin)
+    }catch(e){
+      console.log("error from fetch admins",e)
+    }
+  }
   const fetchUserChat = async (userId) => {
     try {
       const response = await axios.get(`${fed}/getmsg/${userId}`);
@@ -132,82 +141,85 @@ const Admin = () => {
 
   useEffect(() => {
     fetchAllUsers();
+    fetchadmins();
     getEscalated();
     getIssueUsers();
   }, []);
 
   return (
     <div className="admin-container">
-      <div className="admin-section">
-        <h2>All Users</h2>
-        {users.length === 0 ? (
-          <p>No users found.</p>
-        ) : (
-          <ul>
-            {users.map((user, index) => (
-              <li key={index}>{user.name} - {user.email}</li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <div className="user-data">
+        <div className="admin-section">
+          <h2>All Users</h2>
+          {users.length === 0 ? (
+            <p>No users found.</p>
+          ) : (
+            <ul>
+              {users.map((user, index) => (
+                <li key={index}>{user.name} - {user.email}</li>
+              ))}
+            </ul>
+          )}
+        </div>
 
-      <div className="admin-section">
-        <button className="admin-button" onClick={getEscalated}>Get Escalated Users</button>
-        <h2>Escalated Users</h2>
-        {eusers.length === 0 ? (
-          <p>No escalated users found.</p>
-        ) : (
-          <ul>
-            {eusers.map((euser, index) => (
-              <li
-                key={index}
-                onClick={() => {
-                  setType("Escalated");
-                  setroom(euser.userId._id);
-                  setSelectedUser({
-                    userId: euser.userId._id,
-                    name: euser.userId.name,
-                    email: euser.userId.email,
-                  });
-                  setsolve(null);
-                  fetchUserChat(euser.userId._id);
-                }}
-              >
-                {euser.userId.name} - {euser.userId.email}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+        <div className="admin-section">
+          <button className="admin-button" onClick={getEscalated}>Get Escalated Users</button>
+          <h2>Escalated Users</h2>
+          {eusers.length === 0 ? (
+            <p>No escalated users found.</p>
+          ) : (
+            <ul>
+              {eusers.map((euser, index) => (
+                <li
+                  key={index}
+                  onClick={() => {
+                    setType("Escalated");
+                    setroom(euser.userId._id);
+                    setSelectedUser({
+                      userId: euser.userId._id,
+                      name: euser.userId.name,
+                      email: euser.userId.email,
+                    });
+                    setsolve(null);
+                    fetchUserChat(euser.userId._id);
+                  }}
+                >
+                  {euser.userId.name} - {euser.userId.email}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
-      <div className="admin-section">
-        <button className="admin-button" onClick={getIssueUsers}>Get User Issues</button>
-        <h2>User Issues</h2>
-        {iusers.length === 0 ? (
-          <p>No user issues found.</p>
-        ) : (
-          <ul>
-            {iusers.map((iuser, index) => (
-              <li
-                key={index}
-                onClick={() => {
-                  setsolve(iuser.userId.istatus);
-                  setType("Issue");
-                  setSelectedUser({
-                    userId: iuser.userId._id,
-                    name: iuser.userId.name,
-                    email: iuser.userId.email,
-                    Issue: iuser.Issue,
-                  });
-                  fetchUserChat(iuser.userId._id);
-                }}
-              >
-                <strong>{iuser.userId.name}</strong> - {iuser.userId.email}<br />
-                <em>{iuser.Issue}</em>
-              </li>
-            ))}
-          </ul>
-        )}
+        <div className="admin-section">
+          <button className="admin-button" onClick={getIssueUsers}>Get User Issues</button>
+          <h2>User Issues</h2>
+          {iusers.length === 0 ? (
+            <p>No user issues found.</p>
+          ) : (
+            <ul>
+              {iusers.map((iuser, index) => (
+                <li
+                  key={index}
+                  onClick={() => {
+                    setsolve(iuser.userId.istatus);
+                    setType("Issue");
+                    setSelectedUser({
+                      userId: iuser.userId._id,
+                      name: iuser.userId.name,
+                      email: iuser.userId.email,
+                      Issue: iuser.Issue,
+                    });
+                    fetchUserChat(iuser.userId._id);
+                  }}
+                >
+                  <strong>{iuser.userId.name}</strong> - {iuser.userId.email}<br /><br/>
+                  <em><strong>ISSUE:-</strong>{iuser.Issue}</em>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
 
       {selectedUser && (
@@ -224,7 +236,7 @@ const Admin = () => {
             </>
           )}
 
-         
+
           {chatMessages.length > 0 && (
             <div className="admin-chat-box">
               <h4>Chat History</h4>
@@ -232,7 +244,7 @@ const Admin = () => {
                 {chatMessages.map((msg, idx) => (
                   <li
                     key={idx}
-                    className={msg.sender === "admin" || msg.sender==="bot"? "admin-msg" : "user-msg"}
+                    className={msg.sender === "admin" || msg.sender === "bot" ? "admin-msg" : "user-msg"}
                   >
                     <strong>{msg.sender === "user" ? selectedUser.name : msg.sender.toUpperCase()}:</strong><br />
                     {msg.message}
@@ -241,11 +253,11 @@ const Admin = () => {
               </ul>
             </div>
           )}
-           <div style={{ margin: "15px 0" }}>
+          <div style={{ margin: "15px 0" }}>
             {!isTakenOver ? (
-              <button  className="admin-takeover-button" onClick={handleTakeOver}>Take Over</button>
+              <button className="admin-takeover-button" onClick={handleTakeOver}>Take Over</button>
             ) : (
-              <button  className="admin-takeover-button" onClick={handleRelease}>Release</button>
+              <button className="admin-takeover-button" onClick={handleRelease}>Release</button>
             )}
           </div>
 
