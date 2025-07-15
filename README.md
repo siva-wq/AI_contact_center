@@ -1,4 +1,4 @@
-AI Contact Center 💬🤖
+# AI Contact Center 💬🤖
 An AI-powered contact center web application designed to improve customer service by using Natural Language Processing (NLP) and real-time communication. The system supports multilingual text-based conversations, automatic responses, and live chat with human agents.
 
 📌 Features
