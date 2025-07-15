@@ -64,8 +64,8 @@ text
 README.md                # Project documentation
 package.json             # Dependencies and scripts
 
-🚀 Getting Started
-Prerequisites
+# 🚀 Getting Started
+# Prerequisites
 Node.js (v14 or above)
 
 MongoDB (local or cloud - e.g., MongoDB Atlas)
@@ -77,7 +77,9 @@ Clone the repository:
 
 bash
 git clone https://github.com/your-username/ai-contact-center.git
+
 cd ai-contact-center
+
 Install frontend and backend dependencies:
 
 bash
