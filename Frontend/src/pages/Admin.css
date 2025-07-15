@@ -2,10 +2,20 @@
   padding: 20px;
   font-family: Arial, sans-serif;
 }
-
-.admin-section {
-  margin-bottom: 30px;
+.user-data{
+  display: flex;
+  align-items: center;
+  text-align: left;
 }
+.admin-section {
+  font-size: 20px;
+  padding: 20px;
+  margin: 20px;
+  border: 2px solid blueviolet;
+  border-radius: 20px;
+  background-color: #f9f9f9;
+}
+
 
 .admin-section h2 {
   margin-bottom: 10px;
